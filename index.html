@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Set Operations</title>
+</head>
+<body>
+<h2>Set Operations</h2>
+<div>
+<h3>Input Sets:</h3>
+<ul>
+<li>Set A: [1, 2, 3, 4, 5]</li>
+<li>Set B: [4, 5, 6, 7, 8]</li>
+<li>Set C: [3, 4, 5]</li>
+</ul>
+</div>
+<div>
+<h3>Results:</h3>
+<p id="intersection"></p>
+<p id="union"></p>
+<p id="complement"></p>
+</div>
+<script>
+       // Definice vstupních množin jako pole
+       var setA = [1, 2, 3, 4, 5];
+       var setB = [4, 5, 6, 7, 8];
+       var setC = [3, 4, 5];
+       // Funkce pro nalezení průniku množin
+       function intersection(set1, set2) {
+           return set1.filter(item => set2.includes(item));
+       }
+       // Funkce pro spočítání sjednocení množin
+       function union(set1, set2) {
+           var resultSet = [...set1];
+           set2.forEach(item => {
+               if (!resultSet.includes(item)) {
+                   resultSet.push(item);
+               }
+           });
+           return resultSet;
+       }
+       // Funkce pro určení doplňku množiny A vzhledem k množině B
+       function complement(setA, setB) {
+           return setB.filter(item => !setA.includes(item));
+       }
+       // Operace
+       var intersectionAC = intersection(setA, setC);
+       var unionAB = union(setA, setB);
+       var complementAB = complement(setA, setB);
+       // Výstupy
+       document.getElementById("intersection").innerText = "Průnik množiny A a množiny C: " + intersectionAC;
+       document.getElementById("union").innerText = "Sjednocení množiny A a množiny B: " + unionAB;
+       document.getElementById("complement").innerText = "Doplňek množiny A vzhledem k množině B: " + complementAB;
+</script>
+</body>
+</html>
